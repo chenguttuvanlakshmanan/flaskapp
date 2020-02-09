@@ -2,7 +2,8 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
 import pandas as pd
-import pickle
+#import pickle
+from model import model
 
 #intializing flask app
 app = Flask(__name__)
