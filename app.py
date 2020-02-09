@@ -23,6 +23,9 @@ class Topredict(Resource):
         status = model_build(data)
         return { "result" : status}
 
+    def get(self):
+        return "Success"
+
 # api end point
 api.add_resource(Topredict,'/predict')
 
