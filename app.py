@@ -21,8 +21,8 @@ class Topredict(Resource):
     def post(self):
         data = pd.DataFrame(request.get_json())
         # build the model and insert in to db
-        status = model.predict(data)
-        return { "result" : status}
+        #status = model.predict(data)
+        return { "result" : "build model"}
 
     def get(self):
         return "Success"
