@@ -13,8 +13,8 @@ sv = SVC()
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.3)
 model = sv.fit(x,y)
 
-import pickle
-pickle.dump(model,open("model.pkl","wb"))
+# import pickle
+# pickle.dump(model,open("model.pkl","wb"))
 
 
 

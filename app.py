@@ -21,8 +21,11 @@ class Topredict(Resource):
     def post(self):
         data = pd.DataFrame(request.get_json())
         # build the model and insert in to db
-        #status = model.predict(data)
-        return { "result" : "build model"}
+        try:
+            status = model.predict(data)
+        except:
+            status = 'model not build'
+        return { "result" : status}
 
     def get(self):
         return "Success"
@@ -30,5 +33,5 @@ class Topredict(Resource):
 # api end point
 api.add_resource(Topredict,'/predict')
 
-if __name__ == '__main__':
-    app.run(debug=False)
+# if __name__ == '__main__':
+#     app.run(debug=False)
