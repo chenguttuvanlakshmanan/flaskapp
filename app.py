@@ -3,7 +3,7 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 import pandas as pd
 #import pickle
-from model import model
+from model import model22
 
 #intializing flask app
 app = Flask(__name__)
@@ -19,10 +19,13 @@ def model_build(data):
 #----------------------------------------------------------------------------------------------  
 class Topredict(Resource):
     def post(self):
-        data = pd.DataFrame(request.get_json())
+        data = request.get_json()
+        data = pd.DataFrame(data,index=None)
         # build the model and insert in to db
         try:
-            status = model.predict(data)
+            #status = str(data.columns)
+            status = str(model22.predict(data))
+            
         except:
             status = 'model not build'
         return { "result" : status}
@@ -33,5 +36,6 @@ class Topredict(Resource):
 # api end point
 api.add_resource(Topredict,'/predict')
 
-# if __name__ == '__main__':
-#     app.run(debug=False)
+if __name__ == '__main__':
+    app.run(debug=False)
+
